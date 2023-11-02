@@ -1,0 +1,33 @@
+{% set name = "med-otm" %}
+{% set version = "4.1.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  - path: ../src
+
+build:
+  number: 1
+requirements:
+  build:
+    - m2w64-toolchain #[win]
+    - {{ compiler('fortran') }} #[not win]
+    - gcc #[not win]
+    - gxx #[not win]
+    - hdf5 <1.11
+    - make
+    - git
+
+about:
+  home: https://docs.salome-platform.org/latest/dev/MEDCoupling/user/html/index.html
+  license: GPLv3
+  summary: "Salome MED library"
+  doc_url: https://docs.salome-platform.org/latest/dev/MEDCoupling/user/html/index.html
+  dev_url: https://docs.salome-platform.org/latest/dev/MEDCoupling/developer/index.html
+
+extra:
+  recipe-maintainers:
+    - nicogodet
+    - tomsail
