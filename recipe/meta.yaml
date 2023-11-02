@@ -1,5 +1,6 @@
 {% set name = "med-otm" %}
 {% set version = "4.1.1" %}
+{% set mpi = "openmpi" %}
 
 package:
   name: {{ name|lower }}
@@ -14,10 +15,12 @@ requirements:
   build:
     - m2w64-toolchain #[win]
     - {{ compiler('fortran') }} #[not win]
-    - gcc #[not win]
+    - {{ mpi }} #[not win]
+    - {{ mpi }}-mpifort #[not win]
+    - {{ compiler('gcc') }} #[not win]
     - gxx #[not win]
     - hdf5 <1.11
-    - make
+    - automake
     - git
 
 about:
