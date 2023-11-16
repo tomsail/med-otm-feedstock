@@ -17,9 +17,8 @@ requirements:
     - {{ compiler('fortran') }} #[not win]
     - {{ mpi }} #[not win]
     - {{ mpi }}-mpifort #[not win]
-    - {{ compiler('gcc') }} #[not win]
-    - gxx #[not win]
-    - hdf5 <1.11
+    - {{ compiler('c') }} #[not win]
+    - {{ compiler('cxx') }} #[not win]
     - automake
     - git
 
